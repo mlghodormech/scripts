@@ -1,10 +1,10 @@
-sudo apt-get install apache2 apache2-utils
+sudo yum install apache2 apache2-utils
 sudo systemctl enable apache2
 sudo systemctl start apache2
-sudo apt-get install mysql-client mysql-server
+sudo yum install mysql-client mysql-server
 sudo mysql_secure_installation
-sudo apt-get install php7.0 php7.0-mysql libapache2-mod-php7.0 php7.0-cli php7.0-cgi php7.0-gd 
-sudo apt-get install php-mysql
+sudo yum install php7.0 php7.0-mysql libapache2-mod-php7.0 php7.0-cli php7.0-cgi php7.0-gd 
+sudo yum install php-mysql
 sudo vi /var/www/html/info.php
 wget -c http://wordpress.org/latest.tar.gz
 tar -xzvf latest.tar.gz
