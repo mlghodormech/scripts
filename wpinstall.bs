@@ -19,3 +19,5 @@ EXIT;
 sudo cp wp-config-sample.php wp-config.php
 sudo systemctl restart apache2.service 
 sudo systemctl restart mysql.service 
+cd /var/www/html/
+sudo rm -f index.html
