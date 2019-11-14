@@ -1,3 +1,5 @@
+echo "checking for prereqs"
+sudo yum -y nano wget
 echo "installing apache"
 sudo yum -y install httpd
 sudo systemctl start httpd.service
