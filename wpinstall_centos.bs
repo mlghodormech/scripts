@@ -34,10 +34,10 @@ echo "installing wordpress"
 sudo yum -y install php-gd
 sudo service httpd restart
 cd ~
-wget http://wordpress.org/latest.tar.gz
-tar xzvf latest.tar.gz
+sudo wget http://wordpress.org/latest.tar.gz
+sudo tar xzvf latest.tar.gz
 sudo rsync -avP ~/wordpress/ /var/www/html/
-mkdir /var/www/html/wp-content/uploads
+sudo mkdir /var/www/html/wp-content/uploads
 sudo chown -R apache:apache /var/www/html/*
 cd /var/www/html
 sudo cp wp-config-sample.php wp-config.php
