@@ -33,7 +33,7 @@ sudo yum -y install php-gd
 sudo service httpd restart
 cd ~
 echo "get wordpress"
-sudo rpm -a http://wordpress.org/latest.tar.gz
+sudo rpm -f http://wordpress.org/latest.tar.gz
 sudo tar xzvf latest.tar.gz
 sudo rsync -avP ~/wordpress/ /var/www/html/
 sudo mkdir /var/www/html/wp-content/uploads
