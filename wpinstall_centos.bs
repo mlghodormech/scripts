@@ -1,0 +1,45 @@
+echo "installing apache"
+sudo yum -y install httpd
+sudo systemctl start httpd.service
+echo "installing mysql"
+sudo yum -y install mariadb-server mariadb
+sudo systemctl start mariadb
+echo "set password"
+sudo mysql_secure_installation
+sudo systemctl enable mariadb.service
+echo "installing php"
+sudo yum -y install php php-mysql
+sudo systemctl restart httpd.service
+echo "updating php"
+sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+sudo rpm -Uvh https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+sudo cp /etc/yum.repos.d/remi.repo /home/scripts/remi.repo
+sudo nano /etc/yum.repos.d/remi.repo
+sudo cp /etc/yum.repos.d/remi-php73.repo /home/scripts/remi-php73.repo
+sudo nano /etc/yum.repos.d/remi-php73.repo
+yum -y upgrade php*
+sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --permanent --add-service=https
+sudo systemctl enable httpd
+sudo systemctl start httpd
+sudo systemctl restart httpd
+echo "setup mysql"
+echo "CREATE DATABASE wordpress;"
+echo "CREATE USER josh@localhost IDENTIFIED BY 'champlain';"
+echo "GRANT ALL PRIVILEGES ON wordpress.* TO josh@localhost IDENTIFIED BY 'champlain';"
+echo "FLUSH PRIVILEGES;"
+echo "exit;"
+sudo mysql -u root -p
+echo "installing wordpress"
+sudo yum -y install php-gd
+sudo service httpd restart
+cd ~
+wget http://wordpress.org/latest.tar.gz
+tar xzvf latest.tar.gz
+sudo rsync -avP ~/wordpress/ /var/www/html/
+mkdir /var/www/html/wp-content/uploads
+sudo chown -R apache:apache /var/www/html/*
+cd /var/www/html
+sudo cp wp-config-sample.php wp-config.php
+sudo nano wp-config.php
+echo "browse to server to complete setup"
