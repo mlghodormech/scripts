@@ -18,6 +18,7 @@ sudo nano /etc/yum.repos.d/remi-php73.repo
 sudo yum -y upgrade php*
 sudo firewall-cmd --permanent --add-service=http
 sudo firewall-cmd --permanent --add-service=https
+sudo firewall-cmd --reload
 sudo systemctl enable httpd
 sudo systemctl start httpd
 sudo systemctl restart httpd
@@ -33,7 +34,8 @@ sudo yum -y install php-gd
 sudo service httpd restart
 cd ~
 echo "get wordpress"
-sudo rpm -f http://wordpress.org/latest.tar.gz
+wget http://wordpress.org/latest.tar.gz
+wait
 sudo tar xzvf latest.tar.gz
 sudo rsync -avP ~/wordpress/ /var/www/html/
 sudo mkdir /var/www/html/wp-content/uploads
