@@ -32,8 +32,8 @@ echo "installing wordpress"
 sudo yum -y install php-gd
 sudo service httpd restart
 cd ~
-sudo yum -y install wget
-sudo rpm -vh http://wordpress.org/latest.tar.gz
+echo "get wordpress"
+sudo rpm -a http://wordpress.org/latest.tar.gz
 sudo tar xzvf latest.tar.gz
 sudo rsync -avP ~/wordpress/ /var/www/html/
 sudo mkdir /var/www/html/wp-content/uploads
