@@ -13,7 +13,7 @@ sudo systemctl restart httpd.service
 echo "updating php"
 sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 sudo rpm -Uvh https://rpms.remirepo.net/enterprise/remi-release-7.rpm
-sudo cp /etc/yum.repos.d/remi.repo /home/scripts/remi.repo
+sudo cp /etc/yum.repos.d/remi.repo /scripts/remi.repo
 sudo nano /etc/yum.repos.d/remi.repo
 sudo cp /etc/yum.repos.d/remi-php73.repo /home/scripts/remi-php73.repo
 sudo nano /etc/yum.repos.d/remi-php73.repo
@@ -34,7 +34,8 @@ echo "installing wordpress"
 sudo yum -y install php-gd
 sudo service httpd restart
 cd ~
-sudo wget http://wordpress.org/latest.tar.gz
+sudo yum -y install wget
+sudo rpm http://wordpress.org/latest.tar.gz
 sudo tar xzvf latest.tar.gz
 sudo rsync -avP ~/wordpress/ /var/www/html/
 sudo mkdir /var/www/html/wp-content/uploads
