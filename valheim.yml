@@ -10,7 +10,7 @@ services:
       - SERVER_PORT=2456
       - SERVER_NAME="Created With Valheim Docker"
       - WORLD_NAME="Dedicated"
-      - SERVER_PASS="poggers"
+      - SERVER_PASS=poggers
       - SERVER_PUBLIC=0
     volumes:
     - $HOME/valheim-server-config:/config \
