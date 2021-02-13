@@ -1,21 +1,16 @@
 version: "3"
 services:
   valheim:
-    image: mbround18/valheim:latest
+    image: lloesche/valheim-server:latest
     ports:
       - 2456:2456/udp
       - 2457:2457/udp
       - 2458:2458/udp
     environment:
-      - PORT=2456
-      - NAME="Created With Valheim Docker"
-      - WORLD="Dedicated"
-      - PASSWORD="poggers"
-      - TZ=America/New_York
-      - PUBLIC=0
-      - AUTO_UPDATE=0
-      - PUID = 1001
-      - PGID = 1001
+      - SERVER_PORT=2456
+      - SERVER_NAME="Created With Valheim Docker"
+      - WORLD_NAME="Dedicated"
+      - SERVER_PASS="poggers"
+      - SERVER_PUBLIC=0
     volumes:
-    - ./valheim/saves:/home/steam/.config/unity3d/IronGate/Valheim
-    - ./valheim/server:/home/steam/valheim
+    - $HOME/valheim-server-config:/config \
